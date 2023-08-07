@@ -4,8 +4,8 @@ import entities.Employee;
 
 public class SalaryService {
 
-    PensionService pensionService = new PensionService();
-    TaxService taxService = new TaxService();
+    private TaxService taxService;
+    private PensionService pensionService;
 
     public SalaryService(TaxService taxService, PensionService pensionService) {
         this.taxService = taxService;

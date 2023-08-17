@@ -22,7 +22,6 @@ public class ProductController {
         ProductDTO productDTO = productService.findById(id);
         return ResponseEntity.ok(productDTO);
     }
-
     @GetMapping
     public ResponseEntity<Page<ProductDTO>> findAll(Pageable pageable) {
         Page<ProductDTO> productDTO = productService.findAll(pageable);
@@ -35,6 +34,11 @@ public class ProductController {
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{ìd}")
                 .buildAndExpand(productDTO.getId()).toUri();
         return ResponseEntity.created(uri).body(productDTO);
+    }
+    @PutMapping (value = "/{id}")
+    public ResponseEntity<ProductDTO> findById(@PathVariable Long id, @RequestBody ProductDTO productDTO) {
+        productDTO = productService.update(id, productDTO);
+        return ResponseEntity.ok(productDTO);
     }
 
 }
